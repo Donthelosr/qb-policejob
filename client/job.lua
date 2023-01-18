@@ -117,14 +117,14 @@ function TakeOutImpound(vehicle)
             QBCore.Functions.TriggerCallback('qb-garage:server:GetVehicleProperties', function(properties)
                 QBCore.Functions.SetVehicleProperties(veh, properties)
                 SetVehicleNumberPlateText(veh, vehicle.plate)
-		SetVehicleDirtLevel(veh, 0.0)
                 SetEntityHeading(veh, coords.w)
-                exports['LegacyFuel']:SetFuel(veh, vehicle.fuel)
+                exports['ps-fuel']:SetFuel(veh, vehicle.fuel)
                 doCarDamage(veh, vehicle)
                 TriggerServerEvent('police:server:TakeOutImpound', vehicle.plate, currentGarage)
                 closeMenuFull()
                 TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
                 TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+                exports["mk_vehiclekeys"]:AddKey(vehicle)
                 SetVehicleEngineOn(veh, true, true)
             end, vehicle.plate)
         end, vehicle.vehicle, coords, true)
@@ -139,7 +139,7 @@ function TakeOutVehicle(vehicleInfo)
             SetCarItemsInfo()
             SetVehicleNumberPlateText(veh, Lang:t('info.police_plate')..tostring(math.random(1000, 9999)))
             SetEntityHeading(veh, coords.w)
-            exports['LegacyFuel']:SetFuel(veh, 100.0)
+            exports['ps-fuel']:SetFuel(veh, 100.0)
             closeMenuFull()
             if Config.VehicleSettings[vehicleInfo] ~= nil then
                 if Config.VehicleSettings[vehicleInfo].extras ~= nil then
@@ -151,6 +151,7 @@ function TakeOutVehicle(vehicleInfo)
             end
             TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
             TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+            exports["mk_vehiclekeys"]:AddKey(vehicle)
             TriggerServerEvent("inventory:server:addTrunkItems", QBCore.Functions.GetPlate(veh), Config.CarItems)
             SetVehicleEngineOn(veh, true, true)
         end, vehicleInfo, coords, true)
@@ -332,7 +333,7 @@ RegisterNetEvent('police:client:ImpoundVehicle', function(fullImpound, price)
     local vehicle = QBCore.Functions.GetClosestVehicle()
     local bodyDamage = math.ceil(GetVehicleBodyHealth(vehicle))
     local engineDamage = math.ceil(GetVehicleEngineHealth(vehicle))
-    local totalFuel = exports['LegacyFuel']:GetFuel(vehicle)
+    local totalFuel = exports['ps-fuel']:GetFuel(vehicle)
     if vehicle ~= 0 and vehicle then
         local ped = PlayerPedId()
         local pos = GetEntityCoords(ped)
@@ -501,10 +502,11 @@ RegisterNetEvent('qb-police:client:spawnHelicopter', function(k)
             SetVehicleMod(veh, 0, 48)
             SetVehicleNumberPlateText(veh, "ZULU"..tostring(math.random(1000, 9999)))
             SetEntityHeading(veh, coords.w)
-            exports['LegacyFuel']:SetFuel(veh, 100.0)
+            exports['ps-fuel']:SetFuel(veh, 100.0)
             closeMenuFull()
             TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
             TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+            exports["mk_vehiclekeys"]:AddKey(vehicle)
             SetVehicleEngineOn(veh, true, true)
         end, Config.PoliceHelicopter, coords, true)
     end
@@ -719,7 +721,7 @@ if Config.UseTarget then
                         type = "client",
                         event = "qb-police:client:openStash",
                         icon = "fas fa-dungeon",
-                        label = "Open Personal Stash",
+                        label = "Open Personal Locker",
                         job = "police",
                     },
                 },

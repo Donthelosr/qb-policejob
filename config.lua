@@ -17,43 +17,42 @@ Config.LicenseRank = 2
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 Config.Locations = {
     ["duty"] = {
-        [1] = vector3(440.085, -974.924, 30.689),
-        [2] = vector3(-449.811, 6012.909, 31.815),
+        [1] = vector3(441.22, -982.0, 30.69)
     },
     ["vehicle"] = {
-        [1] = vector4(448.159, -1017.41, 28.562, 90.654),
-        [2] = vector4(471.13, -1024.05, 28.17, 274.5),
-        [3] = vector4(-455.39, 6002.02, 31.34, 87.93),
+        -- [1] = vector4(448.159, -1017.41, 28.562, 90.654),
+        -- [2] = vector4(471.13, -1024.05, 28.17, 274.5),
+        -- [3] = vector4(-455.39, 6002.02, 31.34, 87.93),
     },
     ["stash"] = {
-        [1] = vector3(453.075, -980.124, 30.889),
+        [1] = vector3(461.3, -999.64, 30.69),
     },
     ["impound"] = {
-        [1] = vector3(436.68, -1007.42, 27.32),
-        [2] = vector3(-436.14, 5982.63, 31.34),
+        -- [1] = vector3(436.68, -1007.42, 27.32),
+        -- [2] = vector3(-436.14, 5982.63, 31.34),
     },
     ["helicopter"] = {
-        [1] = vector4(449.168, -981.325, 43.691, 87.234),
-        [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
+        -- [1] = vector4(449.168, -981.325, 43.691, 87.234),
+        -- [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
     },
     ["armory"] = {
-        [1] = vector3(462.23, -981.12, 30.68),
+        [1] = vector3(485.46, -995.3, 30.69),
     },
     ["trash"] = {
-        [1] = vector3(439.0907, -976.746, 30.776),
+        [1] = vector3(480.81, -994.79, 31.06),
     },
     ["fingerprint"] = {
-        [1] = vector3(460.9667, -989.180, 24.92),
+        [1] = vector3(474.57, -1013.35, 26.27),
     },
     ["evidence"] = {
-        [1] = vector3(442.1722, -996.067, 30.689),
-        [2] = vector3(451.7031, -973.232, 30.689),
-        [3] = vector3(455.1456, -985.462, 30.689),
+        [1] = vector3(448.52, -997.62, 30.69),
+        -- [2] = vector3(451.7031, -973.232, 30.689),
+        -- [3] = vector3(455.1456, -985.462, 30.689),
     },
     ["stations"] = {
-        [1] = {label = "Police Station", coords = vector4(428.23, -984.28, 29.76, 3.5)},
+        [1] = {label = "Mission Row Police Station", coords = vector4(428.23, -984.28, 29.76, 3.5)},
         [2] = {label = "Prison", coords = vector4(1845.903, 2585.873, 45.672, 272.249)},
-        [3] = {label = "Police Station Paleto", coords = vector4(-451.55, 6014.25, 31.716, 223.81)},
+        
     },
 }
 
@@ -214,18 +213,16 @@ Config.Items = {
     slots = 30,
     items = {
         [1] = {
-            name = "weapon_pistol",
+            name = "weapon_glock17",
             price = 0,
             amount = 1,
             info = {
                 serie = "",
-                attachments = {
-                    {component = "COMPONENT_AT_PI_FLSH", label = "Flashlight"},
-                }
+                
             },
             type = "weapon",
             slot = 1,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4,5,6,7,8,9,10,11}
         },
         [2] = {
             name = "weapon_stungun",
@@ -236,7 +233,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 2,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4,5,6,7,8,9,10,11}
         },
         [3] = {
             name = "weapon_pumpshotgun",
@@ -250,146 +247,281 @@ Config.Items = {
             },
             type = "weapon",
             slot = 3,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {3, 4,5,6,7,8,9,10,11}
         },
         [4] = {
-            name = "weapon_smg",
+            name = "weapon_bullpupshotgun",
             price = 0,
             amount = 1,
             info = {
                 serie = "",
                 attachments = {
-                    {component = "COMPONENT_AT_SCOPE_MACRO_02", label = "1x Scope"},
                     {component = "COMPONENT_AT_AR_FLSH", label = "Flashlight"},
+                    {component = "COMPONENT_AT_AR_AFGRIP", label = "Grip"},
                 }
             },
             type = "weapon",
             slot = 4,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {7,8,9,10,11}
         },
         [5] = {
+            name = "weapon_combatpdw",
+            price = 0,
+            amount = 1,
+            info = {
+                serie = "",
+                attachments = {
+                     {component = "COMPONENT_COMBATPDW_CLIP_02", label = "Magazine"},
+                    {component = "COMPONENT_AT_AR_FLSH", label = "Flashlight"},
+                    {component = "COMPONENT_AT_SCOPE_SMALL", label = "Scope"},
+                }
+            },
+            type = "weapon",
+            slot = 5,
+            authorizedJobGrades = {7, 8, 9, 10, 11}
+        },
+        [6] = {
             name = "weapon_carbinerifle",
             price = 0,
             amount = 1,
             info = {
                 serie = "",
                 attachments = {
+                    {component = "COMPONENT_ASSAULTRIFLE_CLIP_02", label = "Magazine"},
                     {component = "COMPONENT_AT_AR_FLSH", label = "Flashlight"},
-                    {component = "COMPONENT_AT_SCOPE_MEDIUM", label = "3x Scope"},
+                    {component = "COMPONENT_AT_SCOPE_MACRO", label = "Scope"},
+                    {component = "COMPONENT_AT_AR_SUPP_02", label = "Suppressor"},
+                    {component = "COMPONENT_AT_AR_AFGRIP", label = "Grip"},
                 }
             },
             type = "weapon",
-            slot = 5,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 6,
+            authorizedJobGrades = {7, 8, 9, 10, 11}
         },
-        [6] = {
+        [7] = {
+            name = "weapon_carbinerifle_mk2",
+            price = 0,
+            amount = 1,
+            info = {
+                serie = "",
+                attachments = {
+                    {component = "COMPONENT_CARBINERIFLE_CLIP_02", label = "Magazine"},
+                    {component = "COMPONENT_AT_AR_FLSH", label = "Flashlight"},
+                    {component = "COMPONENT_AT_SCOPE_MEDIUM", label = "Scope"},
+                }
+            },
+            type = "weapon",
+            slot = 7,
+            authorizedJobGrades = {6, 7, 8, 9, 10, 11}
+        },
+        [8] = {
             name = "weapon_nightstick",
             price = 0,
             amount = 1,
             info = {},
             type = "weapon",
-            slot = 6,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 8,
+            authorizedJobGrades = {0, 1, 2, 3, 4,5,6,7,8,9,10,11}
         },
-        [7] = {
+        [9] = {
             name = "pistol_ammo",
             price = 0,
             amount = 5,
             info = {},
             type = "item",
-            slot = 7,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 9,
+            authorizedJobGrades = {0, 1, 2, 3, 4,5,6,7,8,9,10,11}
         },
-        [8] = {
+        [10] = {
             name = "smg_ammo",
             price = 0,
             amount = 5,
             info = {},
             type = "item",
-            slot = 8,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 10,
+            authorizedJobGrades = {0, 1, 2, 3, 4,5,6,7,8,9,10,11}
         },
-        [9] = {
+        [11] = {
             name = "shotgun_ammo",
             price = 0,
             amount = 5,
             info = {},
             type = "item",
-            slot = 9,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 11,
+            authorizedJobGrades = {3, 4,5,6,7,8,9,10,11}
         },
-        [10] = {
+        [12] = {
             name = "rifle_ammo",
             price = 0,
             amount = 5,
             info = {},
             type = "item",
-            slot = 10,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 12,
+            authorizedJobGrades = {6, 7, 8, 9, 10, 11}
         },
-        [11] = {
+        [13] = {
+            name = "taserammo",
+            price = 0,
+            amount = 5,
+            info = {},
+            type = "item",
+            slot = 13,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
+        },
+        [14] = {
             name = "handcuffs",
             price = 0,
             amount = 1,
             info = {},
             type = "item",
-            slot = 11,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 14,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
         },
-        [12] = {
+        [15] = {
             name = "weapon_flashlight",
             price = 0,
             amount = 1,
             info = {},
             type = "weapon",
-            slot = 12,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 15,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
         },
-        [13] = {
+        [16] = {
             name = "empty_evidence_bag",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
-            slot = 13,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 16,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
         },
-        [14] = {
+        [17] = {
             name = "police_stormram",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
-            slot = 14,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 17,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
         },
-        [15] = {
+        [18] = {
             name = "armor",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
-            slot = 15,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 18,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
         },
-        [16] = {
+        [19] = {
             name = "radio",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
-            slot = 16,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            slot = 19,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
         },
-        [17] = {
+        [20] = {
             name = "heavyarmor",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
-            slot = 17,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
-        }
+            slot = 20,
+            authorizedJobGrades = {6, 7, 8, 9, 10, 11}
+        },
+        [21] = {
+            name = "gsrtest",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 21,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
+        },
+        [22] = {
+            name = "ifaks",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 22,
+            authorizedJobGrades = {0,1,2,3,4,5,6, 7, 8, 9, 10, 11}
+        },
+        [23] = {
+            name = "spikestrip",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 23,
+            authorizedJobGrades = {0,1,2,3,4,5,6,7,8,9,10,11}
+        },
+        [24] = {
+            name = "ducttape",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 24,
+            authorizedJobGrades = {0,1,2,3,4,5,6,7,8,9,10,11}
+        },
+        [25] = {
+            name = "gunrackkey",
+            price = 100,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 25,
+            authorizedJobGrades = {0,1,2,3,4,5,6,7,8,9,10,11}
+        },
+        [26] = {
+            name = "policegunrack",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 26,
+            authorizedJobGrades = {0,1,2,3,4,5,6,7,8,9,10,11}
+        },
+        [27] = {
+            name = "pdcamera",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 27,
+            authorizedJobGrades = {0,1,2,3,4,5,6,7,8,9,10,11}
+        },
+        [28] = {
+            name = "police-card",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 28,
+            authorizedJobGrades = {0,1,2,3,4,5,6,7,8,9,10,11}
+        },
+        [29] = {
+            name = "diving_gear",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 29,
+            authorizedJobGrades = {0,1,2,3,4,5,6,7,8,9,10,11}
+        },
+        [30] = {
+            name = "policetablet",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 30,
+            authorizedJobGrades = {0,1,2,3,4,5,6,7,8,9,10,11}
+        },
+        
     }
 }
 

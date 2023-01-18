@@ -57,6 +57,92 @@ local function GetCuffedAnimation(playerId)
 end
 
 -- Events
+Citizen.CreateThread(function()
+    
+    exports['qb-target']:AddGlobalPed({
+        options = { -- This is your options table, in this table all the options will be specified for the target to accept
+        
+            { -- This is the first table with options, you can make as many options inside the options table as you want
+            num = 1, -- This is the position number of your option in the list of options in the qb-target context menu (OPTIONAL)
+            type = "client", -- This specifies the type of event the target has to trigger on click, this can be "client", "server", "command" or "qbcommand", this is OPTIONAL and will only work if the event is also specified
+            event = "police:client:JailPlayer", -- This is the event it will trigger on click, this can be a client event, server event, command or qbcore registered command, NOTICE: Normal command can't have arguments passed through, QBCore registered ones can have arguments passed through
+            icon = 'fa-solid fa-user-lock', -- This is the icon that will display next to this trigger option
+            label = 'Jail Player',
+            canInteract = function(entity) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+                if IsPedAPlayer(entity) then return true end -- This will return false if the entity interacted with is a player and otherwise returns true
+                return false
+            end, -- This is the label of this option which you would be able to click on to trigger everything, this has to be a string
+            job = {["police"] = 0, ["bcso"] = 0,["sasp"] = 0}, -- This is the job, this option won't show up if the player doesn't have this job, this can also be done with multiple jobs and grades, if you want multiple jobs you always need a grade with it: job = {["police"] = 0, ["ambulance"] = 2},
+            },
+            { -- This is the first table with options, you can make as many options inside the options table as you want
+            num = 2, -- This is the position number of your option in the list of options in the qb-target context menu (OPTIONAL)
+            type = "client", -- This specifies the type of event the target has to trigger on click, this can be "client", "server", "command" or "qbcommand", this is OPTIONAL and will only work if the event is also specified
+            event = "police:client:PutPlayerInVehicle", -- This is the event it will trigger on click, this can be a client event, server event, command or qbcore registered command, NOTICE: Normal command can't have arguments passed through, QBCore registered ones can have arguments passed through
+            icon = 'fa-solid fa-person-military-to-person', -- This is the icon that will display next to this trigger option
+            label = 'Put In Vehicle',
+            canInteract = function(entity) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+                if IsPedAPlayer(entity) then return true end -- This will return false if the entity interacted with is a player and otherwise returns true
+                return false
+            end, -- This is the label of this option which you would be able to click on to trigger everything, this has to be a string
+            job = {["police"] = 0, ["bcso"] = 0,["sasp"] = 0}, -- This is the job, this option won't show up if the player doesn't have this job, this can also be done with multiple jobs and grades, if you want multiple jobs you always need a grade with it: job = {["police"] = 0, ["ambulance"] = 2},
+            },
+            { -- This is the first table with options, you can make as many options inside the options table as you want
+            num = 3, -- This is the position number of your option in the list of options in the qb-target context menu (OPTIONAL)
+            type = "client", -- This specifies the type of event the target has to trigger on click, this can be "client", "server", "command" or "qbcommand", this is OPTIONAL and will only work if the event is also specified
+            event = "police:client:SearchPlayer", -- This is the event it will trigger on click, this can be a client event, server event, command or qbcore registered command, NOTICE: Normal command can't have arguments passed through, QBCore registered ones can have arguments passed through
+            icon = 'fa-solid fa-people-robbery', -- This is the icon that will display next to this trigger option
+            label = 'Search Player',
+            canInteract = function(entity) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+                if IsPedAPlayer(entity) then return true end -- This will return false if the entity interacted with is a player and otherwise returns true
+                return false
+            end, -- This is the label of this option which you would be able to click on to trigger everything, this has to be a string
+            job = {["police"] = 0, ["bcso"] = 0,["sasp"] = 0}, -- This is the job, this option won't show up if the player doesn't have this job, this can also be done with multiple jobs and grades, if you want multiple jobs you always need a grade with it: job = {["police"] = 0, ["ambulance"] = 2},
+            },
+            -- { -- This is the first table with options, you can make as many options inside the options table as you want
+            -- num = 3, -- This is the position number of your option in the list of options in the qb-target context menu (OPTIONAL)
+            -- type = "client", -- This specifies the type of event the target has to trigger on click, this can be "client", "server", "command" or "qbcommand", this is OPTIONAL and will only work if the event is also specified
+            -- event = "tkt-cuffs:dragplayer", -- This is the event it will trigger on click, this can be a client event, server event, command or qbcore registered command, NOTICE: Normal command can't have arguments passed through, QBCore registered ones can have arguments passed through
+            -- icon = 'fa-solid fa-people-robbery', -- This is the icon that will display next to this trigger option
+            -- label = 'Escort',
+            -- canInteract = function(entity) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+            --     if IsPedAPlayer(entity) then return true end -- This will return false if the entity interacted with is a player and otherwise returns true
+            --     return false
+            -- end, -- This is the label of this option which you would be able to click on to trigger everything, this has to be a string
+            -- job = {["police"] = 0, ["bcso"] = 0,["sasp"] = 0}, -- This is the job, this option won't show up if the player doesn't have this job, this can also be done with multiple jobs and grades, if you want multiple jobs you always need a grade with it: job = {["police"] = 0, ["ambulance"] = 2},
+            -- },
+            { -- This is the first table with options, you can make as many options inside the options table as you want
+            num = 4, -- This is the position number of your option in the list of options in the qb-target context menu (OPTIONAL)
+            type = "client", -- This specifies the type of event the target has to trigger on click, this can be "client", "server", "command" or "qbcommand", this is OPTIONAL and will only work if the event is also specified
+            event = "police:client:EscortPlayer", -- This is the event it will trigger on click, this can be a client event, server event, command or qbcore registered command, NOTICE: Normal command can't have arguments passed through, QBCore registered ones can have arguments passed through
+            icon = 'fa-solid fa-people-robbery', -- This is the icon that will display next to this trigger option
+            label = 'Drag',
+            canInteract = function(entity) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+                if IsPedAPlayer(entity) then return true end -- This will return false if the entity interacted with is a player and otherwise returns true
+                return false
+            end, -- This is the label of this option which you would be able to click on to trigger everything, this has to be a string
+            job = {["police"] = 0, ["bcso"] = 0,["sasp"] = 0}, -- This is the job, this option won't show up if the player doesn't have this job, this can also be done with multiple jobs and grades, if you want multiple jobs you always need a grade with it: job = {["police"] = 0, ["ambulance"] = 2},
+            },
+          
+             { -- This is the first table with options, you can make as many options inside the options table as you want
+             num = 5, -- This is the position number of your option in the list of options in the qb-target context menu (OPTIONAL)
+             type = "client", -- This specifies the type of event the target has to trigger on click, this can be "client", "server", "command" or "qbcommand", this is OPTIONAL and will only work if the event is also specified
+             event = "police:client:UnCuffPlayer", -- This is the event it will trigger on click, this can be a client event, server event, command or qbcore registered command, NOTICE: Normal command can't have arguments passed through, QBCore registered ones can have arguments passed through
+             icon = 'fa-solid fa-people-robbery', -- This is the icon that will display next to this trigger option
+             label = 'Uncuff',
+             canInteract = function(entity) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+                if IsPedAPlayer(entity) then return true end -- This will return false if the entity interacted with is a player and otherwise returns true
+                 return false
+             end, -- This is the label of this option which you would be able to click on to trigger everything, this has to be a string
+             job = {["police"] = 0, ["bcso"] = 0,["sasp"] = 0}, -- This is the job, this option won't show up if the player doesn't have this job, this can also be done with multiple jobs and grades, if you want multiple jobs you always need a grade with it: job = {["police"] = 0, ["ambulance"] = 2},
+             },
+          
+
+
+        },
+        distance = 2.5, -- This is the distance for you to be at for the target to turn blue, this is in GTA units and has to be a float value
+    })
+    
+end)
 RegisterNetEvent('police:client:SetOutVehicle', function()
     local ped = PlayerPedId()
     if IsPedInAnyVehicle(ped, false) then
@@ -124,8 +210,11 @@ RegisterNetEvent('police:client:RobPlayer', function()
     if player ~= -1 and distance < 2.5 then
         local playerPed = GetPlayerPed(player)
         local playerId = GetPlayerServerId(player)
-        if IsEntityPlayingAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 3) or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) or IsTargetDead(playerId) then
-            QBCore.Functions.Progressbar("robbing_player", Lang:t("progressbar.robbing"), math.random(5000, 7000), false, true, {
+       -- if IsEntityPlayingAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 3) or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) or IsTargetDead(playerId)  or GetEntityHealth(playerId) <= 151 then
+            if IsEntityPlayingAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 3) or IsTargetDead(playerId) or GetEntityHealth(playerId) <= 151 then
+       
+           
+            QBCore.Functions.Progressbar("robbing_player", Lang:t("progressbar.robbing"), math.random(8000, 15000), false, true, {
                 disableMovement = true,
                 disableCarMovement = true,
                 disableMouse = false,
@@ -234,9 +323,9 @@ RegisterNetEvent('police:client:EscortPlayer', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
     if player ~= -1 and distance < 2.5 then
         local playerId = GetPlayerServerId(player)
-        if not isHandcuffed and not isEscorted then
+      --  if not isHandcuffed and not isEscorted then
             TriggerServerEvent("police:server:EscortPlayer", playerId)
-        end
+       -- end
     else
         QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
     end
@@ -256,48 +345,124 @@ RegisterNetEvent('police:client:KidnapPlayer', function()
     end
 end)
 
+-- RegisterNetEvent('police:client:CuffPlayerSoft', function()
+--     if not IsPedRagdoll(PlayerPedId()) then
+--         local player, distance = QBCore.Functions.GetClosestPlayer()
+--         if player ~= -1 and distance < 1.5 then
+--             local playerId = GetPlayerServerId(player)
+--             if not IsPedInAnyVehicle(GetPlayerPed(player)) and not IsPedInAnyVehicle(PlayerPedId()) then
+--                 TriggerServerEvent("police:server:CuffPlayer", playerId, true)
+--                 HandCuffAnimation()
+--             else
+--                 QBCore.Functions.Notify(Lang:t("error.vehicle_cuff"), "error")
+--             end
+--         else
+--             QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
+--         end
+--     else
+--         Wait(2000)
+--     end
+-- end)
 RegisterNetEvent('police:client:CuffPlayerSoft', function()
-    if not IsPedRagdoll(PlayerPedId()) then
-        local player, distance = QBCore.Functions.GetClosestPlayer()
-        if player ~= -1 and distance < 1.5 then
-            local playerId = GetPlayerServerId(player)
-            if not IsPedInAnyVehicle(GetPlayerPed(player)) and not IsPedInAnyVehicle(PlayerPedId()) then
-                TriggerServerEvent("police:server:CuffPlayer", playerId, true)
-                HandCuffAnimation()
-            else
-                QBCore.Functions.Notify(Lang:t("error.vehicle_cuff"), "error")
-            end
-        else
-            QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
-        end
-    else
-        Wait(2000)
-    end
-end)
+    if not isHandcuffed then
+       if not cantCuff then
+         if not IsPedRagdoll(PlayerPedId()) then
+           local player, distance = QBCore.Functions.GetClosestPlayer()
+           if player ~= -1 and distance < 1.5 then
+               local playerId = GetPlayerServerId(player)
+               if not IsPedInAnyVehicle(GetPlayerPed(player)) and not IsPedInAnyVehicle(PlayerPedId()) and not cantCuff and not isHandcuffed then
+                   cantCuff = true
+                   TriggerServerEvent("police:server:CuffPlayer", playerId, true)
+                   HandCuffAnimation()
+                   QBCore.Functions.Progressbar("cuffing_player", "Cuffing Cooldown..", 10000, false, false, {
+                       disableMovement = false,
+                       disableCarMovement = false,
+                       disableMouse = false,
+                       disableCombat = false,
+                   }, {}, {}, {}, function() -- Done
+                       cantCuff = false
+                   end)
+               else
+                   QBCore.Functions.Notify(Lang:t("error.vehicle_cuff"), "error")
+               end
+           else
+               QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
+           end
+       else
+               QBCore.Functions.Notify("Cuff Cooldown", "error")
+           end
+   else
+       QBCore.Functions.Notify("You are on Cuff Cooldown", "error")
+   end
+       else
+           Wait(2000)
+       end
+   end)
+
+-- RegisterNetEvent('police:client:CuffPlayer', function()
+--     if not IsPedRagdoll(PlayerPedId()) then
+--         local player, distance = QBCore.Functions.GetClosestPlayer()
+--         if player ~= -1 and distance < 1.5 then
+--             local result = QBCore.Functions.HasItem(Config.HandCuffItem)
+--             if result then
+--                 local playerId = GetPlayerServerId(player)
+--                 if not IsPedInAnyVehicle(GetPlayerPed(player)) and not IsPedInAnyVehicle(PlayerPedId()) then
+--                     TriggerServerEvent("police:server:CuffPlayer", playerId, false)
+--                     HandCuffAnimation()
+--                 else
+--                     QBCore.Functions.Notify(Lang:t("error.vehicle_cuff"), "error")
+--                 end
+--             else
+--                 QBCore.Functions.Notify(Lang:t("error.no_cuff"), "error")
+--             end
+--         else
+--             QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
+--         end
+--     else
+--         Wait(2000)
+--     end
+-- end)
 
 RegisterNetEvent('police:client:CuffPlayer', function()
-    if not IsPedRagdoll(PlayerPedId()) then
-        local player, distance = QBCore.Functions.GetClosestPlayer()
-        if player ~= -1 and distance < 1.5 then
-            local result = QBCore.Functions.HasItem(Config.HandCuffItem)
-            if result then
-                local playerId = GetPlayerServerId(player)
-                if not IsPedInAnyVehicle(GetPlayerPed(player)) and not IsPedInAnyVehicle(PlayerPedId()) then
-                    TriggerServerEvent("police:server:CuffPlayer", playerId, false)
-                    HandCuffAnimation()
+    if not isHandcuffed then
+        if not cantCuff then
+          if not IsPedRagdoll(PlayerPedId()) then
+            local player, distance = QBCore.Functions.GetClosestPlayer()
+            if player ~= -1 and distance < 1.5 then
+                local result = QBCore.Functions.Hasitem(Config.HandCuffItem)
+                if result then
+                    local playerId = GetPlayerServerId(player)
+                    if not IsPedInAnyVehicle(GetPlayerPed(player)) and not IsPedInAnyVehicle(PlayerPedId()) and not cantCuff and not isHandcuffed then
+                        cantCuff = true
+                        TriggerServerEvent("police:server:CuffPlayer", playerId, false)
+                        HandCuffAnimation()
+                        QBCore.Functions.Progressbar("cuffing_player", "Cuffing Cooldown..", 10000, false, false, {
+                            disableMovement = false,
+                            disableCarMovement = false,
+                            disableMouse = false,
+                            disableCombat = false,
+                        }, {}, {}, {}, function() -- Done
+                            cantCuff = false
+                        end)
+                    else
+                        QBCore.Functions.Notify(Lang:t("error.vehicle_cuff"), "error")
+                    end
                 else
-                    QBCore.Functions.Notify(Lang:t("error.vehicle_cuff"), "error")
+                    QBCore.Functions.Notify(Lang:t("error.no_cuff"), "error")
                 end
             else
-                QBCore.Functions.Notify(Lang:t("error.no_cuff"), "error")
+                QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
             end
         else
-            QBCore.Functions.Notify(Lang:t("error.none_nearby"), "error")
+            QBCore.Functions.Notify("Cuff Cooldown", "error")
         end
     else
-        Wait(2000)
+        QBCore.Functions.Notify("You are on Cuff Cooldown", "error")
     end
-end)
+        else
+            Wait(2000)
+        end
+    end)
 
 RegisterNetEvent('police:client:GetEscorted', function(playerId)
     local ped = PlayerPedId()
@@ -369,24 +534,60 @@ RegisterNetEvent('police:client:GetKidnappedDragger', function()
     end)
 end)
 
+-- RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
+--     local ped = PlayerPedId()
+--     if not isHandcuffed then
+--         isHandcuffed = true
+--         TriggerServerEvent("police:server:SetHandcuffStatus", true)
+--         ClearPedTasksImmediately(ped)
+--         if GetSelectedPedWeapon(ped) ~= `WEAPON_UNARMED` then
+--             SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+--         end
+--         if not isSoftcuff then
+--             cuffType = 16
+--             GetCuffedAnimation(playerId)
+--             QBCore.Functions.Notify(Lang:t("info.cuff"), 'primary')
+--         else
+--             cuffType = 49
+--             GetCuffedAnimation(playerId)
+--             QBCore.Functions.Notify(Lang:t("info.cuffed_walk"), 'primary')
+--         end
+--     else
+--         isHandcuffed = false
+--         isEscorted = false
+--         TriggerEvent('hospital:client:isEscorted', isEscorted)
+--         DetachEntity(ped, true, false)
+--         TriggerServerEvent("police:server:SetHandcuffStatus", false)
+--         ClearPedTasksImmediately(ped)
+--         TriggerServerEvent("InteractSound_SV:PlayOnSource", "Uncuff", 0.2)
+--         QBCore.Functions.Notify(Lang:t("success.uncuffed"),"success")
+--     end
+-- end)
+
 RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
-    local ped = PlayerPedId()
+    local ped = PlayerPedId()   
     if not isHandcuffed then
-        isHandcuffed = true
-        TriggerServerEvent("police:server:SetHandcuffStatus", true)
-        ClearPedTasksImmediately(ped)
-        if GetSelectedPedWeapon(ped) ~= `WEAPON_UNARMED` then
-            SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+        GetCuffedAnimation(playerId)
+            exports['ps-ui']:Circle(function(success) 
+                if success then 
+                    ClearPedTasks(PlayerPedId())
+                    QBCore.Functions.Notify("You broke free")
+                else 
+            isHandcuffed = true
+            TriggerServerEvent("police:server:SetHandcuffStatus", true)
+            ClearPedTasksImmediately(ped)
+            if GetSelectedPedWeapon(ped) ~= WEAPON_UNARMED then
+                SetCurrentPedWeapon(ped, WEAPON_UNARMED, true)
+            end
+            if not isSoftcuff then
+                cuffType = 16
+                QBCore.Functions.Notify("You are cuffed!")
+            else
+                cuffType = 49
+                QBCore.Functions.Notify("You are cuffed, but you can walk")
+            end
         end
-        if not isSoftcuff then
-            cuffType = 16
-            GetCuffedAnimation(playerId)
-            QBCore.Functions.Notify(Lang:t("info.cuff"), 'primary')
-        else
-            cuffType = 49
-            GetCuffedAnimation(playerId)
-            QBCore.Functions.Notify(Lang:t("info.cuffed_walk"), 'primary')
-        end
+    end, 1, 4)
     else
         isHandcuffed = false
         isEscorted = false
@@ -395,7 +596,7 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         TriggerServerEvent("police:server:SetHandcuffStatus", false)
         ClearPedTasksImmediately(ped)
         TriggerServerEvent("InteractSound_SV:PlayOnSource", "Uncuff", 0.2)
-        QBCore.Functions.Notify(Lang:t("success.uncuffed"),"success")
+        QBCore.Functions.Notify("You are uncuffed!")
     end
 end)
 
@@ -412,6 +613,32 @@ CreateThread(function()
             EnableControlAction(0, 322, true)
             EnableControlAction(0, 249, true)
             EnableControlAction(0, 46, true)
+        end
+
+        if dragger then
+            DisableControlAction(0,23,true) -- entering vehicles
+            DisableControlAction(0, 59, true) -- Disable steering in vehicle
+			DisableControlAction(0, 71, true) -- Disable driving forward in vehicle
+			DisableControlAction(0, 72, true) -- Disable reversing in vehicle
+            DisableControlAction(0, 75, true)  -- Disable exit vehicle
+			DisableControlAction(27, 75, true) -- Disable exit vehicle
+            DisableControlAction(0, 24, true) -- Attack
+			DisableControlAction(0, 257, true) -- Attack 2
+			DisableControlAction(0, 25, true) -- Aim
+			DisableControlAction(0, 263, true) -- Melee Attack 1
+        end
+
+        if isEscorting then
+            DisableControlAction(0,23,true) -- entering vehicles
+            DisableControlAction(0, 59, true) -- Disable steering in vehicle
+			DisableControlAction(0, 71, true) -- Disable driving forward in vehicle
+			DisableControlAction(0, 72, true) -- Disable reversing in vehicle
+            DisableControlAction(0, 75, true)  -- Disable exit vehicle
+			DisableControlAction(27, 75, true) -- Disable exit vehicle
+            DisableControlAction(0, 24, true) -- Attack
+			DisableControlAction(0, 257, true) -- Attack 2
+			DisableControlAction(0, 25, true) -- Aim
+			DisableControlAction(0, 263, true) -- Melee Attack 1
         end
 
         if isHandcuffed then
